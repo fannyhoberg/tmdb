@@ -49,13 +49,20 @@ const MovieDetailPage = () => {
             <p>
               <strong>Runtime:</strong> {data.runtime}
             </p>
-
-            <p>
+            <div>
               <strong>Genres:</strong>
-              {data.genres.map((res) => (
-                <p>{res.name}</p>
-              ))}
-            </p>
+            </div>
+            {data.genres.map((res) => (
+              <div key={res.id}>{res.name}</div>
+            ))}
+            <div>
+              <strong>Actors:</strong>
+            </div>
+            {data.credits.cast
+              .filter((res) => res.known_for_department === "Acting")
+              .map((res) => (
+                <div key={res.id}>{res.name}</div>
+              ))}{" "}
           </div>
         )}
       </div>

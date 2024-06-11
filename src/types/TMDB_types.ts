@@ -78,4 +78,24 @@ export interface MovieDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  credits: Credits;
+}
+
+interface CastMember {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+interface Credits {
+  cast: CastMember[];
 }

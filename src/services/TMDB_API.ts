@@ -31,7 +31,9 @@ export const getMovies = async () => {
 
 // get movie by ID
 export const getMovie = async (id: number) => {
-  const res = await instance.get<MovieDetails>(`/movie/${id}`);
+  const res = await instance.get<MovieDetails>(
+    `/movie/${id}?append_to_response=credits`
+  );
   return res.data;
 };
 
