@@ -53,3 +53,29 @@ export interface TrendingResults {
   total_pages: number;
   total_results: number;
 }
+
+export interface MovieDetails {
+  adult: boolean;
+  backdrop_path: string;
+  budget: number;
+  genres: Genre[];
+  homepage: string | null;
+  id: number;
+  imdb_id: string | null;
+  origin_country: string[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  revenue: number;
+  runtime: number | null;
+  // spoken_languages: SpokenLanguage[];
+  status: string;
+  tagline: string | null;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}

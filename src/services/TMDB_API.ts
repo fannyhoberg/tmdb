@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   Genre,
+  MovieDetails,
   MovieResults,
   NowPlayingResults,
   TopRatedResults,
@@ -25,6 +26,12 @@ export const getMovies = async () => {
   const res = await instance.get<MovieResults>(
     `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity`
   );
+  return res.data;
+};
+
+// get movie by ID
+export const getMovie = async (id: number) => {
+  const res = await instance.get<MovieDetails>(`/movie/${id}`);
   return res.data;
 };
 

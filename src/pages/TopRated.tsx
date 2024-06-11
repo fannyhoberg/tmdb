@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTopRated } from "../services/TMDB_API";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const TopRated = () => {
   const {
@@ -18,6 +20,8 @@ const TopRated = () => {
     queryFn: getTopRated,
   });
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="center-container">
@@ -33,6 +37,12 @@ const TopRated = () => {
                 <h2>{res.title}</h2>
                 <p>Release date: {res.release_date}</p>
                 <p>Vote average: {res.vote_average}</p>
+                <Button
+                  className="custom-button"
+                  onClick={() => navigate(`/movie/${res.id}`)}
+                >
+                  Read more
+                </Button>
               </div>
             ))}
           </div>

@@ -61,6 +61,32 @@
   border-radius: 8px 8px 0 0;
 }
 
+.container-cards-details {
+  display: flex;
+  // flex-wrap: wrap;
+  justify-content: center;
+  // gap: 20px;
+  // padding: 20px;
+}
+
+.custom-card-details {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.custom-card-details img {
+  width: 50%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
 // Bigger screens
 
 @media (min-width: 600px) {
