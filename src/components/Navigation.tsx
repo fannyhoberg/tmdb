@@ -16,6 +16,9 @@ const Navigation = () => {
             <Nav.Link as={NavLink} end to="/now-playing">
               Now playing
             </Nav.Link>
+            <Nav.Link as={NavLink} end to="/top-rated">
+              Top rated
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -37,7 +37,12 @@ const HomePage = () => {
               Now playing
             </Button>
             <Button className="custom-button-homepage">Trending</Button>
-            <Button className="custom-button-homepage">Top rated</Button>
+            <Button
+              onClick={() => navigate("/top-rated")}
+              className="custom-button-homepage"
+            >
+              Top rated
+            </Button>
             <Button className="custom-button-homepage">Genres</Button>
             <Button className="custom-button-homepage">All films</Button>
           </div>

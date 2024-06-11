@@ -33,3 +33,9 @@ export const getNowPlaying = async () => {
   const res = await instance.get<NowPlayingResults>(`/movie/now_playing`);
   return res.data;
 };
+
+// get top rated
+export const getTopRated = async () => {
+  const res = await instance.get<NowPlayingResults>(`/movie/top_rated`);
+  return res.data;
+};

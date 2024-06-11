@@ -39,3 +39,10 @@ export interface NowPlayingResults {
   total_pages: number;
   total_results: number;
 }
+
+export interface NowPlayingResults {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
