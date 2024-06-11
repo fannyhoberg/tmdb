@@ -1,5 +1,11 @@
 import axios from "axios";
-import { Genre, MovieResults, NowPlayingResults } from "../types/TMDB_types";
+import {
+  Genre,
+  MovieResults,
+  NowPlayingResults,
+  TopRatedResults,
+  TrendingResults,
+} from "../types/TMDB_types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -36,6 +42,12 @@ export const getNowPlaying = async () => {
 
 // get top rated
 export const getTopRated = async () => {
-  const res = await instance.get<NowPlayingResults>(`/movie/top_rated`);
+  const res = await instance.get<TopRatedResults>(`/movie/top_rated`);
+  return res.data;
+};
+
+// get trending movies
+export const getTrending = async () => {
+  const res = await instance.get<TrendingResults>(`/trending/movie/day`);
   return res.data;
 };

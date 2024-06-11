@@ -36,7 +36,12 @@ const HomePage = () => {
             >
               Now playing
             </Button>
-            <Button className="custom-button-homepage">Trending</Button>
+            <Button
+              onClick={() => navigate("/trending")}
+              className="custom-button-homepage"
+            >
+              Trending
+            </Button>
             <Button
               onClick={() => navigate("/top-rated")}
               className="custom-button-homepage"
