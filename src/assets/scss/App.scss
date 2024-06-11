@@ -33,9 +33,52 @@
   }
 }
 
-// wider screen
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.custom-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.custom-card img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+// Bigger screens
+
+@media (min-width: 600px) {
+  .custom-card {
+    max-width: 45%;
+  }
+}
+
 @media (min-width: 800px) {
   .center-container {
     align-items: center;
+  }
+
+  .custom-card {
+    max-width: 30%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-card {
+    max-width: 22%;
   }
 }

@@ -26,3 +26,16 @@ export interface Genre {
   id: number;
   name: string;
 }
+
+interface MovieDates {
+  maximum: string;
+  minimum: string;
+}
+
+export interface NowPlayingResults {
+  dates: MovieDates;
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}

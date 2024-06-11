@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Genre, MovieResults } from "../types/TMDB_types";
+import { Genre, MovieResults, NowPlayingResults } from "../types/TMDB_types";
 
 const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -25,5 +25,11 @@ export const getMovies = async () => {
 // get all genres
 export const getGenres = async () => {
   const res = await instance.get<Genre>(`/genre/movie/list`);
+  return res.data;
+};
+
+// get now playing
+export const getNowPlaying = async () => {
+  const res = await instance.get<NowPlayingResults>(`/movie/now_playing`);
   return res.data;
 };
