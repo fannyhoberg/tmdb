@@ -1,0 +1,41 @@
+#App {
+  background-color: bisque;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.center-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.home-buttons {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.custom-button-homepage {
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: white;
+  font-size: large;
+  color: black;
+  border-color: blue;
+  margin: 1rem;
+
+  &:hover {
+    background-color: lightgrey;
+  }
+}
+
+// wider screen
+@media (min-width: 800px) {
+  .center-container {
+    align-items: center;
+  }
+}
