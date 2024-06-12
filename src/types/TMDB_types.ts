@@ -99,3 +99,23 @@ interface CastMember {
 interface Credits {
   cast: CastMember[];
 }
+
+export interface PersonDetails {
+  id: number;
+  profile_path: string;
+  biography: string;
+  birthday: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  movie_credits: CreditsPerson;
+}
+
+interface CreditsPerson {
+  cast: Cast[];
+}
+
+interface Cast {
+  id: number;
+  title: string;
+}

@@ -1,13 +1,8 @@
 import { Button } from "react-bootstrap";
-import { getGenres, getMovies } from "../services/TMDB_API";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
-
-  allMovies();
-  genres();
 
   return (
     <>

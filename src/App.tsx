@@ -10,6 +10,7 @@ import MovieDetailPage from "./pages/MovieDetailPage";
 import NotfoundPage from "./pages/NotfoundPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import LoadingSpinner from "./components/LoadingSpinner";
+import PersonDetailPage from "./pages/PersonDetailPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/trending" element={<TrendingPage />}></Route>
 
           <Route path="/movie/:id" element={<MovieDetailPage />}></Route>
+          <Route path="/person/:id" element={<PersonDetailPage />}></Route>
 
           <Route path="*" element={<NotfoundPage />}></Route>
         </Routes>

@@ -36,6 +36,15 @@
   }
 }
 
+.custom-link {
+  color: dimgrey;
+  cursor: pointer;
+
+  &:hover {
+    color: saddlebrown;
+  }
+}
+
 .container-cards {
   display: flex;
   flex-wrap: wrap;
@@ -77,11 +86,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
 }
 
 .custom-card-details img {
-  width: 50%;
+  width: 40%;
   height: auto;
   max-height: 450px;
   object-fit: cover;

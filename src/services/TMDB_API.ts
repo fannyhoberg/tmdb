@@ -4,6 +4,7 @@ import {
   MovieDetails,
   MovieResults,
   NowPlayingResults,
+  PersonDetails,
   TopRatedResults,
   TrendingResults,
 } from "../types/TMDB_types";
@@ -32,7 +33,7 @@ export const getMovies = async () => {
 // get movie by ID
 export const getMovie = async (id: number) => {
   const res = await instance.get<MovieDetails>(
-    `/movie/${id}?append_to_response=credits`
+    `/movie/${id}?include_adult=false&append_to_response=credits`
   );
   return res.data;
 };
@@ -45,18 +46,32 @@ export const getGenres = async () => {
 
 // get now playing
 export const getNowPlaying = async () => {
-  const res = await instance.get<NowPlayingResults>(`/movie/now_playing`);
+  const res = await instance.get<NowPlayingResults>(
+    `/movie/now_playing?include_adult=false&sort_by=popularity.desc`
+  );
   return res.data;
 };
 
 // get top rated
 export const getTopRated = async () => {
-  const res = await instance.get<TopRatedResults>(`/movie/top_rated`);
+  const res = await instance.get<TopRatedResults>(
+    `/movie/top_rated?include_adult=false`
+  );
   return res.data;
 };
 
 // get trending movies
 export const getTrending = async () => {
-  const res = await instance.get<TrendingResults>(`/trending/movie/day`);
+  const res = await instance.get<TrendingResults>(
+    `/trending/movie/day?include_adult=false`
+  );
+  return res.data;
+};
+
+// get person by ID
+export const getPerson = async (id: number) => {
+  const res = await instance.get<PersonDetails>(
+    `/person/${id}?append_to_response=movie_credits`
+  );
   return res.data;
 };
