@@ -6,26 +6,19 @@ const MovieDetailPage = () => {
   const { id } = useParams();
   const movieId = Number(id);
 
-  const {
-    data,
-    error,
-    isError,
-    isFetching,
-    isLoading,
-    isPending,
-    isRefetching,
-    isStale,
-    isSuccess,
-    status,
-  } = useQuery({
+  const { data, error, isError, isSuccess } = useQuery({
     queryKey: ["movie-details"],
     queryFn: () => getMovie(movieId),
     staleTime: 1000 * 1,
   });
   return (
     <>
-      <div className="container-cards-details">
-        {isSuccess && (
+      {isError && (
+        <div className="d-flex justify-content-center">{error.message}</div>
+      )}
+
+      {isSuccess && (
+        <div className="container-cards-details">
           <div className="custom-card-details" key={data.id}>
             <div>
               <img
@@ -64,8 +57,8 @@ const MovieDetailPage = () => {
                 <div key={res.id}>{res.name}</div>
               ))}{" "}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

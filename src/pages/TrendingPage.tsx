@@ -4,18 +4,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const TrendingPage = () => {
-  const {
-    data,
-    error,
-    isError,
-    isFetching,
-    isLoading,
-    isPending,
-    isRefetching,
-    isStale,
-    isSuccess,
-    status,
-  } = useQuery({
+  const { data, error, isError, isSuccess } = useQuery({
     queryKey: ["trending"],
     queryFn: getTrending,
   });
@@ -24,9 +13,13 @@ const TrendingPage = () => {
 
   return (
     <>
-      <div className="center-container">
-        <h1>Trending</h1>
-        {isSuccess && (
+      {isError && (
+        <div className="d-flex justify-content-center">{error.message}</div>
+      )}
+
+      {isSuccess && (
+        <div className="center-container">
+          <h1>Trending</h1>
           <div className="container-cards">
             {data.results.map((res) => (
               <div className="custom-card" key={res.id}>
@@ -46,8 +39,8 @@ const TrendingPage = () => {
               </div>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

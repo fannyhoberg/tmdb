@@ -4,19 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const [page, setPage] = useState(1);
-
   const navigate = useNavigate();
-
-  const allMovies = async () => {
-    const data = await getMovies();
-    console.log("movies", data);
-  };
-
-  const genres = async () => {
-    const data = await getGenres();
-    console.log("genres", data);
-  };
 
   allMovies();
   genres();
