@@ -44,6 +44,14 @@ export const getGenres = async () => {
   return res.data;
 };
 
+// get genre by ID
+export const getGenre = async (id: number) => {
+  const res = await instance.get<MovieResults>(
+    `/discover/movie?&with_genres=${id}`
+  );
+  return res.data;
+};
+
 // get now playing
 export const getNowPlaying = async () => {
   const res = await instance.get<NowPlayingResults>(

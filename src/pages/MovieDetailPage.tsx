@@ -61,9 +61,9 @@ const MovieDetailPage = () => {
               <p>
                 <strong>Genres:</strong>
               </p>
-              {data.genres.map((res) => (
+              {/* {data.genres.map((res) => (
                 <p key={res.id}>{res.name}</p>
-              ))}
+              ))} */}
               <p>
                 <strong>Actors:</strong>
               </p>

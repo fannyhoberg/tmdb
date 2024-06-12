@@ -23,6 +23,10 @@ export interface MovieResults {
 }
 
 export interface Genre {
+  genres: InfoGenre[];
+}
+
+interface InfoGenre {
   id: number;
   name: string;
 }

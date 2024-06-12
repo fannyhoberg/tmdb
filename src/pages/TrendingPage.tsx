@@ -30,10 +30,7 @@ const TrendingPage = () => {
                 <h2>{res.title}</h2>
                 <p>Release date: {res.release_date}</p>
                 <p>Popularity: {res.popularity}</p>
-                <Button
-                  className="custom-button"
-                  onClick={() => navigate(`/movie/${res.id}`)}
-                >
+                <Button onClick={() => navigate(`/movie/${res.id}`)}>
                   Read more
                 </Button>
               </div>

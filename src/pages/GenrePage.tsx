@@ -1,15 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNowPlaying } from "../services/TMDB_API";
+import { useNavigate, useParams } from "react-router-dom";
+import { getGenre } from "../services/TMDB_API";
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
-const NowPlayingPage = () => {
-  const { data, error, isError, isSuccess } = useQuery({
-    queryKey: ["nowplaying"],
-    queryFn: getNowPlaying,
-  });
+const GenrePage = () => {
+  const { id } = useParams();
+  const genreId = Number(id);
 
   const navigate = useNavigate();
+
+  const { data, error, isError, isSuccess } = useQuery({
+    queryKey: ["genre"],
+    queryFn: () => getGenre(genreId),
+    staleTime: 1000 * 1,
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -19,7 +28,7 @@ const NowPlayingPage = () => {
 
       {isSuccess && (
         <div className="center-container">
-          <h1>Now Playing</h1>
+          <h1>Genre</h1>
           <div className="container-cards">
             {data.results.map((res) => (
               <div className="custom-card" key={res.id}>
@@ -29,7 +38,11 @@ const NowPlayingPage = () => {
                 />
                 <h2>{res.title}</h2>
                 <p>Release date: {res.release_date}</p>
-                <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                <p>Vote average: {res.vote_average}</p>
+                <Button
+                  className="custom-button"
+                  onClick={() => navigate(`/movie/${res.id}`)}
+                >
                   Read more
                 </Button>
               </div>
@@ -41,4 +54,4 @@ const NowPlayingPage = () => {
   );
 };
 
-export default NowPlayingPage;
+export default GenrePage;
