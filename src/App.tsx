@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import TopRated from "./pages/TopRated";
 import TrendingPage from "./pages/TrendingPage";
 import MovieDetailPage from "./pages/MovieDetailPage";
+import NotfoundPage from "./pages/NotfoundPage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/trending" element={<TrendingPage />}></Route>
 
           <Route path="/movie/:id" element={<MovieDetailPage />}></Route>
+
+          <Route path="*" element={<NotfoundPage />}></Route>
         </Routes>
       </Container>
     </div>
