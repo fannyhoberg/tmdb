@@ -29,8 +29,12 @@ const MovieDetailPage = () => {
       {isSuccess && (
         <>
           <div>
-            <Button variant="secondary" onClick={() => navigate(-1)}>
-              Back to previous page
+            <Button
+              className="mb-2 mt-2"
+              variant="secondary"
+              onClick={() => navigate(-1)}
+            >
+              Previous page
             </Button>
           </div>
 

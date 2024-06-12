@@ -8,7 +8,7 @@ const Navigation = () => {
     <Navbar expand="lg" className="bg-body-tertiary" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Home
+          🎞
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
