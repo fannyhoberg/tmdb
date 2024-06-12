@@ -8,6 +8,8 @@ import TopRated from "./pages/TopRated";
 import TrendingPage from "./pages/TrendingPage";
 import MovieDetailPage from "./pages/MovieDetailPage";
 import NotfoundPage from "./pages/NotfoundPage";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <Navigation />
 
       <Container className="py-2">
+        <LoadingSpinner />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/now-playing" element={<NowPlayingPage />}></Route>
@@ -26,6 +29,8 @@ function App() {
           <Route path="*" element={<NotfoundPage />}></Route>
         </Routes>
       </Container>
+
+      <ReactQueryDevtools />
     </div>
   );
 }
