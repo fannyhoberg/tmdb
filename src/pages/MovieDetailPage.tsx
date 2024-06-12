@@ -36,12 +36,14 @@ const MovieDetailPage = () => {
 
           <div className="container-cards-details">
             <div className="custom-card-details" key={data.id}>
-              <div>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
-                  alt={data.title}
-                />
-              </div>
+              {data.poster_path && (
+                <div>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+                    alt={data.title}
+                  />
+                </div>
+              )}
               <h2>{data.title}</h2>
               <p>
                 <strong>Release date:</strong> {data.release_date}
@@ -61,9 +63,15 @@ const MovieDetailPage = () => {
               <p>
                 <strong>Genres:</strong>
               </p>
-              {/* {data.genres.map((res) => (
-                <p key={res.id}>{res.name}</p>
-              ))} */}
+              {data.genres.map((res) => (
+                <p
+                  className="custom-link"
+                  onClick={() => navigate(`/genre/${res.id}`)}
+                  key={res.id}
+                >
+                  {res.name}
+                </p>
+              ))}
               <p>
                 <strong>Actors:</strong>
               </p>

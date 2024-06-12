@@ -23,10 +23,12 @@ const NowPlayingPage = () => {
           <div className="container-cards">
             {data.results.map((res) => (
               <div className="custom-card" key={res.id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
-                  alt={res.title}
-                />
+                {res.poster_path && (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
+                    alt={res.title}
+                  />
+                )}
                 <h2>{res.title}</h2>
                 <p>Release date: {res.release_date}</p>
                 <Button onClick={() => navigate(`/movie/${res.id}`)}>

@@ -62,7 +62,7 @@ export interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
   budget: number;
-  genres: Genre[];
+  genres: InfoGenre[];
   homepage: string | null;
   id: number;
   imdb_id: string | null;
@@ -75,7 +75,6 @@ export interface MovieDetails {
   release_date: string;
   revenue: number;
   runtime: number | null;
-  // spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string | null;
   title: string;
