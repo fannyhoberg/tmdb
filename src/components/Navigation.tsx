@@ -22,6 +22,9 @@ const Navigation = () => {
             <Nav.Link as={NavLink} end to="/top-rated">
               Top rated
             </Nav.Link>
+            <Nav.Link as={NavLink} end to="/genres">
+              Genres
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

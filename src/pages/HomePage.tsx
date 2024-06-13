@@ -40,7 +40,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="mt-5">
-          <h2>Genres</h2>
+          <h2>All genres</h2>
         </div>
         {isError && (
           <div className="d-flex justify-content-center">{error.message}</div>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { getGenre } from "../services/TMDB_API";
+import { getGenre, getGenres } from "../services/TMDB_API";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Pagination from "../components/Pagination";
@@ -20,6 +20,16 @@ const GenrePage = () => {
     queryKey: ["genre", { page }],
     queryFn: () => getGenre(genreId, page),
     staleTime: 1000 * 1,
+  });
+
+  const {
+    data: genreData,
+    error: genreError,
+    isError: genreIsError,
+    isSuccess: genreIsSuccess,
+  } = useQuery({
+    queryKey: ["genres"],
+    queryFn: getGenres,
   });
 
   const prevPage = () => {
@@ -48,10 +58,22 @@ const GenrePage = () => {
         <div className="d-flex justify-content-center">{error.message}</div>
       )}
 
+      {genreIsError && (
+        <div className="d-flex justify-content-center">
+          {genreError.message}
+        </div>
+      )}
+
+      {genreIsSuccess && (
+        <h1 className="d-flex justify-content-center">
+          {genreData.genres.find((genre) => genre.id === genreId)?.name ||
+            "Genre not found"}
+        </h1>
+      )}
+
       {isSuccess && (
         <>
           <div className="center-container">
-            <h1>Genre</h1>
             <div className="container-cards">
               {data.results.map((res) => (
                 <div className="custom-card" key={res.id}>

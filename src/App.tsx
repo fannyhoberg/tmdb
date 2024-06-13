@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import LoadingSpinner from "./components/LoadingSpinner";
 import PersonDetailPage from "./pages/PersonDetailPage";
 import GenrePage from "./pages/GenrePage";
+import OverviewGenresPage from "./pages/OverviewGenresPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/now-playing" element={<NowPlayingPage />}></Route>
           <Route path="/top-rated" element={<TopRated />}></Route>
           <Route path="/trending" element={<TrendingPage />}></Route>
+          <Route path="/genres" element={<OverviewGenresPage />}></Route>
 
           <Route path="/movie/:id" element={<MovieDetailPage />}></Route>
           <Route path="/person/:id" element={<PersonDetailPage />}></Route>
