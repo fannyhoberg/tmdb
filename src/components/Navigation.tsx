@@ -1,9 +1,20 @@
+import { useContext } from "react";
+import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
+import { ThemeContext } from "../contexts/ThemeContextProvider";
 
 const Navigation = () => {
+  const themeContext = useContext(ThemeContext);
+
+  if (!themeContext) {
+    throw new Error("Can't use ThemeContext");
+  }
+
+  const { darkMode, changeTheme } = themeContext;
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary" sticky="top">
       <Container>
@@ -27,6 +38,9 @@ const Navigation = () => {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <Button variant="outline-secondary" onClick={changeTheme}>
+          {darkMode ? "🌝" : "🌚"}
+        </Button>
       </Container>
     </Navbar>
   );

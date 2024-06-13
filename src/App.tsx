@@ -13,10 +13,20 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import PersonDetailPage from "./pages/PersonDetailPage";
 import GenrePage from "./pages/GenrePage";
 import OverviewGenresPage from "./pages/OverviewGenresPage";
+import { ThemeContext } from "./contexts/ThemeContextProvider";
+import { useContext } from "react";
 
 function App() {
+  const themeContext = useContext(ThemeContext);
+
+  if (!themeContext) {
+    throw new Error("Can't use ThemeContext");
+  }
+
+  const { darkMode } = themeContext;
+
   return (
-    <div id="App">
+    <div id="App" className={!darkMode ? "bg-white text-dark" : ""}>
       <Navigation />
 
       <Container className="py-2">
