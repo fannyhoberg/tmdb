@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMovie } from "../services/TMDB_API";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useEffect } from "react";
+
+import { getMovie } from "../services/TMDB_API";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -28,11 +29,7 @@ const MovieDetailPage = () => {
       {isSuccess && (
         <>
           <div>
-            <Button
-              className="mb-2 mt-2"
-              variant="secondary"
-              onClick={() => navigate(-1)}
-            >
+            <Button className="pagination-button" onClick={() => navigate(-1)}>
               &laquo; Go back
             </Button>
           </div>

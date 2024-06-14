@@ -1,20 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import { Container } from "react-bootstrap";
 import "./assets/scss/App.scss";
-import NowPlayingPage from "./pages/NowPlayingPage";
-import Navigation from "./components/Navigation";
-import TopRated from "./pages/TopRated";
-import TrendingPage from "./pages/TrendingPage";
-import MovieDetailPage from "./pages/MovieDetailPage";
-import NotfoundPage from "./pages/NotfoundPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import LoadingSpinner from "./components/LoadingSpinner";
-import PersonDetailPage from "./pages/PersonDetailPage";
+import { useContext } from "react";
+
+import HomePage from "./pages/HomePage";
+import NowPlayingPage from "./pages/NowPlayingPage";
+import TrendingPage from "./pages/TrendingPage";
+import TopRatedPage from "./pages/TopRatedPage";
+import NotfoundPage from "./pages/NotfoundPage";
 import GenrePage from "./pages/GenrePage";
 import OverviewGenresPage from "./pages/OverviewGenresPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import PersonDetailPage from "./pages/PersonDetailPage";
+
+import LoadingSpinner from "./components/LoadingSpinner";
 import { ThemeContext } from "./contexts/ThemeContextProvider";
-import { useContext } from "react";
+import Navigation from "./components/Navigation";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -34,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/now-playing" element={<NowPlayingPage />}></Route>
-          <Route path="/top-rated" element={<TopRated />}></Route>
+          <Route path="/top-rated" element={<TopRatedPage />}></Route>
           <Route path="/trending" element={<TrendingPage />}></Route>
           <Route path="/genres" element={<OverviewGenresPage />}></Route>
 

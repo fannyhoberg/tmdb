@@ -16,7 +16,13 @@ const Navigation = () => {
   const { darkMode, changeTheme } = themeContext;
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+    <Navbar
+      // bg="dark"
+      // variant="dark"
+      expand="lg"
+      sticky="top"
+      className={!darkMode ? "light-mode" : "dark-mode"}
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           🎞

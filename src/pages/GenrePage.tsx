@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { getGenre, getGenres } from "../services/TMDB_API";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+
+import { getGenre, getGenres } from "../services/TMDB_API";
 import Pagination from "../components/Pagination";
 
 const GenrePage = () => {
@@ -22,10 +23,10 @@ const GenrePage = () => {
   });
 
   const {
-    data: genreData,
-    error: genreError,
-    isError: genreIsError,
-    isSuccess: genreIsSuccess,
+    data: genreTitleData,
+    error: genreTitleError,
+    isError: genreTitleIsError,
+    isSuccess: genreTitleIsSuccess,
   } = useQuery({
     queryKey: ["genres"],
     queryFn: getGenres,
@@ -57,15 +58,15 @@ const GenrePage = () => {
         <div className="d-flex justify-content-center">{error.message}</div>
       )}
 
-      {genreIsError && (
+      {genreTitleIsError && (
         <div className="d-flex justify-content-center">
-          {genreError.message}
+          {genreTitleError.message}
         </div>
       )}
 
-      {genreIsSuccess && (
+      {genreTitleIsSuccess && (
         <h1 className="d-flex justify-content-center">
-          {genreData.genres.find((genre) => genre.id === genreId)?.name ||
+          {genreTitleData.genres.find((genre) => genre.id === genreId)?.name ||
             "Genre not found"}
         </h1>
       )}

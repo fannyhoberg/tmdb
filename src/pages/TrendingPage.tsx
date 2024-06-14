@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTrending } from "../services/TMDB_API";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
+import { getTrending } from "../services/TMDB_API";
 
 const TrendingPage = () => {
   const { data, error, isError, isSuccess } = useQuery({

@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNowPlaying } from "../services/TMDB_API";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
+import { getNowPlaying } from "../services/TMDB_API";
 
 const NowPlayingPage = () => {
   const { data, error, isError, isSuccess } = useQuery({

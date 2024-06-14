@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 import { getGenres } from "../services/TMDB_API";
 
 const HomePage = () => {

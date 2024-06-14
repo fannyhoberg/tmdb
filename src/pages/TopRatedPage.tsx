@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTopRated } from "../services/TMDB_API";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const TopRated = () => {
+import { getTopRated } from "../services/TMDB_API";
+
+const TopRatedPage = () => {
   const { data, error, isError, isSuccess } = useQuery({
     queryKey: ["toprated"],
     queryFn: getTopRated,
@@ -44,4 +45,4 @@ const TopRated = () => {
   );
 };
 
-export default TopRated;
+export default TopRatedPage;

@@ -7,9 +7,15 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+.dark-mode {
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
 .light-mode {
-  background-color: cornsilk;
+  background-color: gainsboro;
   color: black;
+  border: 1px solid black;
 }
 
 .center-container {
@@ -42,21 +48,39 @@
   }
 }
 
+.custom-button {
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: lightgrey;
+  color: black;
+  border: 1px solid #ddd;
+  margin: 1rem;
+
+  &:hover {
+    background-color: steelblue;
+    border: 1px solid #ddd;
+  }
+}
+
 .pagination-button {
   border: 1px solid transparent;
   border-radius: 0.5rem;
   cursor: pointer;
   background-color: white;
   color: black;
-  border-color: blue;
+  border-color: #ddd;
   margin: 1rem;
 
   &:disabled {
     background-color: grey;
+    border-color: #ddd;
   }
 
   &:hover {
     background-color: lightgrey;
+    border-color: steelblue;
   }
 }
 
@@ -65,7 +89,7 @@
   cursor: pointer;
 
   &:hover {
-    color: saddlebrown;
+    color: steelblue;
   }
 }
 
@@ -78,7 +102,7 @@
 }
 
 .custom-card {
-  background-color: white;
+  background-color: whitesmoke;
   color: black;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -102,7 +126,7 @@
 }
 
 .custom-card-details {
-  background-color: seashell;
+  background-color: whitesmoke;
   color: black;
   border: 1px solid #ddd;
   border-radius: 8px;
