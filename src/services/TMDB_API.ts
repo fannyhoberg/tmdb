@@ -22,14 +22,6 @@ const instance = axios.create({
   },
 });
 
-// get all movies
-export const getMovies = async () => {
-  const res = await instance.get<MovieResults>(
-    `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity`
-  );
-  return res.data;
-};
-
 // get movie by ID
 export const getMovie = async (id: number) => {
   const res = await instance.get<MovieDetails>(
@@ -47,7 +39,7 @@ export const getGenres = async () => {
 // get genre by ID
 export const getGenre = async (id: number, page: number) => {
   const res = await instance.get<MovieResults>(
-    `/discover/movie?&with_genres=${id}&page=${page}`
+    `/discover/movie?with_genres=${id}&page=${page}&include_adult=false`
   );
   return res.data;
 };
@@ -55,7 +47,7 @@ export const getGenre = async (id: number, page: number) => {
 // get now playing
 export const getNowPlaying = async () => {
   const res = await instance.get<NowPlayingResults>(
-    `/movie/now_playing?include_adult=false&sort_by=popularity.desc`
+    `/movie/now_playing?include_adult=false&sort_by=popularity.desc&region=US`
   );
   return res.data;
 };
@@ -63,7 +55,7 @@ export const getNowPlaying = async () => {
 // get top rated
 export const getTopRated = async () => {
   const res = await instance.get<TopRatedResults>(
-    `/movie/top_rated?include_adult=false`
+    `/movie/top_rated?include_adult=false&region=US`
   );
   return res.data;
 };
@@ -71,7 +63,7 @@ export const getTopRated = async () => {
 // get trending movies
 export const getTrending = async () => {
   const res = await instance.get<TrendingResults>(
-    `/trending/movie/day?include_adult=false`
+    `/trending/movie/day?include_adult=false&region=US`
   );
   return res.data;
 };

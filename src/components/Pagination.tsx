@@ -31,14 +31,14 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       <div>
-        {page} of {totalPages}
+        {page} of {totalPages < 500 ? totalPages : "500"}
       </div>
 
       <div>
         <Button
           className="pagination-button"
           onClick={onNextPage}
-          disabled={!isNextPage}
+          disabled={!isNextPage || page === totalPages || page === 500}
         >
           &raquo; <span className="visually-hidden">Next page</span>
         </Button>

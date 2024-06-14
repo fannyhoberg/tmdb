@@ -11,9 +11,8 @@ const PersonDetailPage = () => {
   const navigate = useNavigate();
 
   const { data, error, isError, isSuccess } = useQuery({
-    queryKey: ["person-details"],
+    queryKey: ["person-details", personId],
     queryFn: () => getPerson(personId),
-    staleTime: 1000 * 1,
   });
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const PersonDetailPage = () => {
               variant="secondary"
               onClick={() => navigate(-1)}
             >
-              Previous page
+              &laquo; Go back
             </Button>
           </div>
 

@@ -17,9 +17,8 @@ const GenrePage = () => {
   const navigate = useNavigate();
 
   const { data, error, isError, isSuccess } = useQuery({
-    queryKey: ["genre", { page }],
+    queryKey: ["genre", page, genreId],
     queryFn: () => getGenre(genreId, page),
-    staleTime: 1000 * 1,
   });
 
   const {
