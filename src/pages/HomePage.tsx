@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+import useTheme from "../hooks/useTheme";
+
 import { getGenres } from "../services/TMDB_API";
-import { useContext } from "react";
-import { ThemeContext } from "../contexts/ThemeContextProvider";
 
 const HomePage = () => {
   const { data, error, isError, isSuccess } = useQuery({
@@ -14,13 +14,7 @@ const HomePage = () => {
 
   const navigate = useNavigate();
 
-  const themeContext = useContext(ThemeContext);
-
-  if (!themeContext) {
-    throw new Error("Can't use ThemeContext");
-  }
-
-  const { darkMode } = themeContext;
+  const { darkMode } = useTheme();
 
   return (
     <>

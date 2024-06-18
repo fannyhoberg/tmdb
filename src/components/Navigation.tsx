@@ -1,28 +1,15 @@
-import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
-import { ThemeContext } from "../contexts/ThemeContextProvider";
+import useTheme from "../hooks/useTheme";
 
 const Navigation = () => {
-  const themeContext = useContext(ThemeContext);
-
-  if (!themeContext) {
-    throw new Error("Can't use ThemeContext");
-  }
-
-  const { darkMode, changeTheme } = themeContext;
+  const { darkMode, changeTheme } = useTheme();
 
   return (
-    <Navbar
-      bg="dark"
-      variant="dark"
-      expand="lg"
-      sticky="top"
-      // className={darkMode ? "dark-mode" : ""}
-    >
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/" className="logo">
           🎞 TMDB
