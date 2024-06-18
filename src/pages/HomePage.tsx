@@ -59,10 +59,11 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <h1>Welcome to the movie database</h1>
+        <h1>Welcome to The Movie Database</h1>
         <p>
-          Explore the latest releases and old classics, your favourite actor and
-          genre!
+          Explore the latest releases in cinema or get your old classics. <br />{" "}
+          Find out which films your favourite actor stars in and browse films
+          based on genre!
         </p>
       </div>
       <div>
@@ -73,9 +74,9 @@ const HomePage = () => {
         )}
 
         {nowplayingisSuccess && (
-          <div className="scrollmenu">
-            <>
-              <h2>Now Playing</h2>
+          <>
+            <h2 className="mt-5">Now Playing</h2>
+            <div className="scrollmenu">
               <div className="scroll-card-container">
                 {nowplayingData.results.map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
@@ -92,7 +93,7 @@ const HomePage = () => {
                     </Button>
                   </div>
                 ))}
-                <div className="scroll-custom-card justify-content-center">
+                <div className="scroll-custom-card d-flex justify-content-center align-items-center">
                   <Button
                     className="custom-button-homepage-lightmode"
                     onClick={() => navigate("/now-playing")}
@@ -101,8 +102,8 @@ const HomePage = () => {
                   </Button>
                 </div>
               </div>
-            </>
-          </div>
+            </div>
+          </>
         )}
 
         {trendingisError && (
@@ -112,9 +113,9 @@ const HomePage = () => {
         )}
 
         {trendingisSuccess && (
-          <div className="scrollmenu">
-            <>
-              <h2>Trending</h2>
+          <>
+            <h2 className="mt-5">Trending</h2>
+            <div className="scrollmenu">
               <div className="scroll-card-container">
                 {trendingData.results.map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
@@ -132,7 +133,7 @@ const HomePage = () => {
                     </Button>
                   </div>
                 ))}
-                <div className="scroll-custom-card justify-content-center">
+                <div className="scroll-custom-card d-flex justify-content-center align-items-center">
                   <Button
                     className="custom-button-homepage-lightmode"
                     onClick={() => navigate("/trending")}
@@ -141,8 +142,8 @@ const HomePage = () => {
                   </Button>
                 </div>
               </div>
-            </>
-          </div>
+            </div>
+          </>
         )}
 
         {topratedisError && (
@@ -152,9 +153,9 @@ const HomePage = () => {
         )}
 
         {topratedisSuccess && (
-          <div className="scrollmenu">
-            <>
-              <h2>Top rated</h2>
+          <>
+            <h2 className="mt-5">Top rated</h2>
+            <div className="scrollmenu">
               <div className="scroll-card-container">
                 {topratedData.results.map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
@@ -172,7 +173,7 @@ const HomePage = () => {
                     </Button>
                   </div>
                 ))}
-                <div className="scroll-custom-card justify-content-center">
+                <div className="scroll-custom-card d-flex justify-content-center align-items-center">
                   <Button
                     className="custom-button-homepage-lightmode"
                     onClick={() => navigate("/top-rated")}
@@ -181,50 +182,9 @@ const HomePage = () => {
                   </Button>
                 </div>
               </div>
-            </>
-          </div>
+            </div>
+          </>
         )}
-
-        {/* <div>
-          <div className="mt-5">
-            <h2>Categories</h2>
-          </div>
-          <div>
-            <Button
-              onClick={() => navigate("/now-playing")}
-              className={
-                darkMode
-                  ? "custom-button-homepage-darkmode"
-                  : "custom-button-homepage-lightmode"
-              }
-            >
-              Now playing
-            </Button>
-            <Button
-              onClick={() => navigate("/trending")}
-              className={
-                darkMode
-                  ? "custom-button-homepage-darkmode"
-                  : "custom-button-homepage-lightmode"
-              }
-            >
-              Trending
-            </Button>
-            <Button
-              onClick={() => navigate("/top-rated")}
-              className={
-                darkMode
-                  ? "custom-button-homepage-darkmode"
-                  : "custom-button-homepage-lightmode"
-              }
-            >
-              Top rated
-            </Button>
-          </div>
-        </div> */}
-        <div className="mt-5">
-          <h2>All genres</h2>
-        </div>
 
         {genresisError && (
           <div className="d-flex justify-content-center">
@@ -234,6 +194,7 @@ const HomePage = () => {
 
         {genresisSuccess && (
           <>
+            <h2 className="mt-5">All genres</h2>
             <div>
               {genresData.genres.map((res) => (
                 <Button

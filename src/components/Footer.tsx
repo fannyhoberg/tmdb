@@ -4,8 +4,8 @@ const Footer = () => {
       <div className="m-4">
         <p>Contact us</p>
         <p>FAQ</p>
-        <p>Policy</p>
-        <p>Social media</p>
+        <p>About us</p>
+        <p>API</p>
       </div>
       <div className="m-4">
         <i className="fa-brands fa-facebook"></i>
