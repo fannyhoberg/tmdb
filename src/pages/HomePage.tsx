@@ -4,10 +4,50 @@ import { useNavigate } from "react-router-dom";
 
 import useTheme from "../hooks/useTheme";
 
-import { getGenres } from "../services/TMDB_API";
+import {
+  getGenres,
+  getNowPlaying,
+  getTopRated,
+  getTrending,
+} from "../services/TMDB_API";
 
 const HomePage = () => {
-  const { data, error, isError, isSuccess } = useQuery({
+  const {
+    data: nowplayingData,
+    error: nowplayingError,
+    isError: nowplayingisError,
+    isSuccess: nowplayingisSuccess,
+  } = useQuery({
+    queryKey: ["nowplaying"],
+    queryFn: getNowPlaying,
+  });
+
+  const {
+    data: trendingData,
+    error: trendingError,
+    isError: trendingisError,
+    isSuccess: trendingisSuccess,
+  } = useQuery({
+    queryKey: ["trending"],
+    queryFn: getTrending,
+  });
+
+  const {
+    data: topratedData,
+    error: topratedError,
+    isError: topratedisError,
+    isSuccess: topratedisSuccess,
+  } = useQuery({
+    queryKey: ["toprated"],
+    queryFn: getTopRated,
+  });
+
+  const {
+    data: genresData,
+    error: genresError,
+    isError: genresisError,
+    isSuccess: genresisSuccess,
+  } = useQuery({
     queryKey: ["genres"],
     queryFn: getGenres,
   });
@@ -18,8 +58,134 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="button-container mt-4">
-        <div>
+      <div>
+        <h1>Welcome to the movie database</h1>
+        <p>
+          Explore the latest releases and old classics, your favourite actor and
+          genre!
+        </p>
+      </div>
+      <div>
+        {nowplayingisError && (
+          <div className="d-flex justify-content-center">
+            {nowplayingError.message}
+          </div>
+        )}
+
+        {nowplayingisSuccess && (
+          <div className="scrollmenu">
+            <>
+              <h2>Now Playing</h2>
+              <div className="scroll-card-container">
+                {nowplayingData.results.map((res) => (
+                  <div className="scroll-custom-card" key={res.id}>
+                    {res.poster_path && (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
+                        alt={res.title}
+                      />
+                    )}
+                    <h2>{res.title}</h2>
+                    <p>Release date: {res.release_date}</p>
+                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                      Read more
+                    </Button>
+                  </div>
+                ))}
+                <div className="scroll-custom-card justify-content-center">
+                  <Button
+                    className="custom-button-homepage-lightmode"
+                    onClick={() => navigate("/now-playing")}
+                  >
+                    See all
+                  </Button>
+                </div>
+              </div>
+            </>
+          </div>
+        )}
+
+        {trendingisError && (
+          <div className="d-flex justify-content-center">
+            {trendingError.message}
+          </div>
+        )}
+
+        {trendingisSuccess && (
+          <div className="scrollmenu">
+            <>
+              <h2>Trending</h2>
+              <div className="scroll-card-container">
+                {trendingData.results.map((res) => (
+                  <div className="scroll-custom-card" key={res.id}>
+                    {res.poster_path && (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
+                        alt={res.title}
+                      />
+                    )}
+                    <h2>{res.title}</h2>
+                    <p>Release date: {res.release_date}</p>
+                    <p>Popularity: {res.popularity}</p>
+                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                      Read more
+                    </Button>
+                  </div>
+                ))}
+                <div className="scroll-custom-card justify-content-center">
+                  <Button
+                    className="custom-button-homepage-lightmode"
+                    onClick={() => navigate("/trending")}
+                  >
+                    See all
+                  </Button>
+                </div>
+              </div>
+            </>
+          </div>
+        )}
+
+        {topratedisError && (
+          <div className="d-flex justify-content-center">
+            {topratedError.message}
+          </div>
+        )}
+
+        {topratedisSuccess && (
+          <div className="scrollmenu">
+            <>
+              <h2>Top rated</h2>
+              <div className="scroll-card-container">
+                {topratedData.results.map((res) => (
+                  <div className="scroll-custom-card" key={res.id}>
+                    {res.poster_path && (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
+                        alt={res.title}
+                      />
+                    )}
+                    <h2>{res.title}</h2>
+                    <p>Release date: {res.release_date}</p>
+                    <p>Vote average: {res.vote_average}</p>
+                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                      Read more
+                    </Button>
+                  </div>
+                ))}
+                <div className="scroll-custom-card justify-content-center">
+                  <Button
+                    className="custom-button-homepage-lightmode"
+                    onClick={() => navigate("/top-rated")}
+                  >
+                    See all
+                  </Button>
+                </div>
+              </div>
+            </>
+          </div>
+        )}
+
+        {/* <div>
           <div className="mt-5">
             <h2>Categories</h2>
           </div>
@@ -55,18 +221,21 @@ const HomePage = () => {
               Top rated
             </Button>
           </div>
-        </div>
+        </div> */}
         <div className="mt-5">
           <h2>All genres</h2>
         </div>
-        {isError && (
-          <div className="d-flex justify-content-center">{error.message}</div>
+
+        {genresisError && (
+          <div className="d-flex justify-content-center">
+            {genresError.message}
+          </div>
         )}
 
-        {isSuccess && (
+        {genresisSuccess && (
           <>
             <div>
-              {data.genres.map((res) => (
+              {genresData.genres.map((res) => (
                 <Button
                   key={res.id}
                   className={

@@ -14,7 +14,9 @@ const Navigation = () => {
         <Navbar.Brand as={Link} to="/" className="logo">
           🎞 TMDB
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={NavLink} end to="/now-playing">
@@ -30,10 +32,10 @@ const Navigation = () => {
               Genres
             </Nav.Link>
           </Nav>
+          <Button variant="outline-secondary" onClick={changeTheme}>
+            {darkMode ? "🌝" : "🌚"}
+          </Button>
         </Navbar.Collapse>
-        <Button variant="outline-secondary" onClick={changeTheme}>
-          {darkMode ? "🌝" : "🌚"}
-        </Button>
       </Container>
     </Navbar>
   );

@@ -1,25 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 
-import { getGenre, getGenres } from "../services/TMDB_API";
 import Pagination from "../components/Pagination";
+import defaultImage from "../assets/images/imagenotfound.png";
+
+import { getGenre, getGenres } from "../services/TMDB_API";
 
 const GenrePage = () => {
   const { id } = useParams();
   const genreId = Number(id);
 
-  const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const currentPage = parseInt(searchParams.get("page") || "1");
 
   const navigate = useNavigate();
 
   const { data, error, isError, isSuccess } = useQuery({
-    queryKey: ["genre", page, genreId],
-    queryFn: () => getGenre(genreId, page),
+    queryKey: ["genre", currentPage, genreId],
+    queryFn: () => getGenre(genreId, currentPage),
   });
 
   const {
@@ -33,23 +33,17 @@ const GenrePage = () => {
   });
 
   const prevPage = () => {
-    const newPage = page - 1;
+    const newPage = currentPage - 1;
     setSearchParams({ page: newPage.toString() });
-    setPage(newPage);
   };
 
   const nextPage = () => {
-    const newPage = page + 1;
+    const newPage = currentPage + 1;
     setSearchParams({ page: newPage.toString() });
-    setPage(newPage);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    setPage(currentPage);
   }, [currentPage]);
 
   return (
@@ -77,12 +71,14 @@ const GenrePage = () => {
             <div className="container-cards">
               {data.results.map((res) => (
                 <div className="custom-card" key={res.id}>
-                  {res.poster_path && (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
-                      alt={res.title}
-                    />
-                  )}
+                  <img
+                    src={
+                      res.poster_path !== null
+                        ? `https://image.tmdb.org/t/p/w500/${res.poster_path}`
+                        : defaultImage
+                    }
+                    alt={res.title}
+                  />
                   <h2>{res.title}</h2>
                   <p>Release date: {res.release_date}</p>
                   <p>Vote average: {res.vote_average}</p>
