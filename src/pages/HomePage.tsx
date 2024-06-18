@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { getGenres } from "../services/TMDB_API";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContextProvider";
 
 const HomePage = () => {
   const { data, error, isError, isSuccess } = useQuery({
@@ -11,6 +13,14 @@ const HomePage = () => {
   });
 
   const navigate = useNavigate();
+
+  const themeContext = useContext(ThemeContext);
+
+  if (!themeContext) {
+    throw new Error("Can't use ThemeContext");
+  }
+
+  const { darkMode } = themeContext;
 
   return (
     <>
@@ -22,19 +32,31 @@ const HomePage = () => {
           <div>
             <Button
               onClick={() => navigate("/now-playing")}
-              className="custom-button-homepage"
+              className={
+                darkMode
+                  ? "custom-button-homepage-darkmode"
+                  : "custom-button-homepage-lightmode"
+              }
             >
               Now playing
             </Button>
             <Button
               onClick={() => navigate("/trending")}
-              className="custom-button-homepage"
+              className={
+                darkMode
+                  ? "custom-button-homepage-darkmode"
+                  : "custom-button-homepage-lightmode"
+              }
             >
               Trending
             </Button>
             <Button
               onClick={() => navigate("/top-rated")}
-              className="custom-button-homepage"
+              className={
+                darkMode
+                  ? "custom-button-homepage-darkmode"
+                  : "custom-button-homepage-lightmode"
+              }
             >
               Top rated
             </Button>
@@ -53,7 +75,11 @@ const HomePage = () => {
               {data.genres.map((res) => (
                 <Button
                   key={res.id}
-                  className="custom-button-homepage"
+                  className={
+                    darkMode
+                      ? "custom-button-homepage-darkmode"
+                      : "custom-button-homepage-lightmode"
+                  }
                   onClick={() => navigate(`/genre/${res.id}`)}
                 >
                   {res.name}

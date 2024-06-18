@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 import { getGenres } from "../services/TMDB_API";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContextProvider";
 
 const OverviewGenresPage = () => {
   const { data, error, isError, isSuccess } = useQuery({
@@ -12,6 +14,14 @@ const OverviewGenresPage = () => {
 
   const navigate = useNavigate();
 
+  const themeContext = useContext(ThemeContext);
+
+  if (!themeContext) {
+    throw new Error("Can't use ThemeContext");
+  }
+
+  const { darkMode } = themeContext;
+
   return (
     <>
       {isError && (
@@ -20,17 +30,23 @@ const OverviewGenresPage = () => {
 
       {isSuccess && (
         <>
-          <h1>All genres</h1>
-          <div>
-            {data.genres.map((res) => (
-              <Button
-                key={res.id}
-                className="custom-button-homepage"
-                onClick={() => navigate(`/genre/${res.id}`)}
-              >
-                {res.name}
-              </Button>
-            ))}
+          <div className="mt-4">
+            <h1>All genres</h1>
+            <div>
+              {data.genres.map((res) => (
+                <Button
+                  key={res.id}
+                  className={
+                    darkMode
+                      ? "custom-button-homepage-darkmode"
+                      : "custom-button-homepage-lightmode"
+                  }
+                  onClick={() => navigate(`/genre/${res.id}`)}
+                >
+                  {res.name}
+                </Button>
+              ))}
+            </div>
           </div>
         </>
       )}

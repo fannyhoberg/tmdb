@@ -17,11 +17,11 @@ const Navigation = () => {
 
   return (
     <Navbar
-      // bg="dark"
-      // variant="dark"
+      bg="dark"
+      variant="dark"
       expand="lg"
       sticky="top"
-      className={!darkMode ? "light-mode" : "dark-mode"}
+      // className={darkMode ? "dark-mode" : ""}
     >
       <Container>
         <Navbar.Brand as={Link} to="/">

@@ -26,25 +26,60 @@
   justify-content: center;
 }
 
+.footer-container {
+  min-height: 30vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10vh;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.footer-container {
+  font-size: 14px;
+  .fa-brands {
+    font-size: 24px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
 .home-buttons {
   margin-top: 50px;
   width: 100%;
 }
 
-.custom-button-homepage {
+.custom-button-homepage-darkmode {
   padding: 1rem 2rem;
   border: 1px solid transparent;
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
-  background-color: white;
+  background-color: darkslategray;
   font-size: large;
-  color: black;
-  border-color: blue;
+  color: rgb(94, 173, 158);
+  border-color: rgb(94, 173, 158);
   margin: 1rem;
 
   &:hover {
-    background-color: lightgrey;
+    background-color: rgb(2, 40, 33);
+  }
+}
+
+.custom-button-homepage-lightmode {
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: gainsboro;
+  font-size: large;
+  color: darkslategrey;
+  border-color: darkslategrey;
+  margin: 1rem;
+
+  &:hover {
+    background-color: rgb(94, 173, 158);
   }
 }
 

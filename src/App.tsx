@@ -17,6 +17,7 @@ import PersonDetailPage from "./pages/PersonDetailPage";
 import LoadingSpinner from "./components/LoadingSpinner";
 import { ThemeContext } from "./contexts/ThemeContextProvider";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -47,7 +48,7 @@ function App() {
           <Route path="*" element={<NotfoundPage />}></Route>
         </Routes>
       </Container>
-
+      <Footer />
       <ReactQueryDevtools />
     </div>
   );
