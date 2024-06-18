@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useEffect } from "react";
+import defaultImage from "../assets/images/imagenotfound.png";
 
 import { getPerson } from "../services/TMDB_API";
 
@@ -48,7 +49,7 @@ const PersonDetailPage = () => {
                   />
                 </div>
               )}
-              <h2>{data.name}</h2>
+              <h1>{data.name}</h1>
               <p>
                 <strong>Known for:</strong> {data.known_for_department}
               </p>
@@ -62,18 +63,29 @@ const PersonDetailPage = () => {
                 <strong>Overview:</strong> {data.biography}
               </p>
 
-              <p>
-                <strong>Movies:</strong>
-              </p>
-              {data.movie_credits.cast.map((res) => (
-                <p
-                  className="custom-link"
-                  onClick={() => navigate(`/movie/${res.id}`)}
-                  key={res.id}
-                >
-                  {res.title}
-                </p>
-              ))}
+              <h2 className="mt-5">Films</h2>
+              <div className="reference-container">
+                {data.movie_credits.cast.map((res) => (
+                  <div className="reference-card" key={res.id}>
+                    <img
+                      src={
+                        res.poster_path !== null
+                          ? `https://image.tmdb.org/t/p/w500/${res.poster_path}`
+                          : defaultImage
+                      }
+                      alt={res.title}
+                    />
+
+                    <p
+                      className="custom-link"
+                      onClick={() => navigate(`/movie/${res.id}`)}
+                      key={res.id}
+                    >
+                      {res.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </>

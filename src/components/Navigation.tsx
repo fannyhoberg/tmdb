@@ -24,8 +24,8 @@ const Navigation = () => {
       // className={darkMode ? "dark-mode" : ""}
     >
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          🎞
+        <Navbar.Brand as={Link} to="/" className="logo">
+          🎞 TMDB
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

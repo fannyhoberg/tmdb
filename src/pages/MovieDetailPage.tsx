@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useEffect } from "react";
+import defaultImage from "../assets/images/imagenotfound.png";
 
 import { getMovie } from "../services/TMDB_API";
 
@@ -44,7 +45,7 @@ const MovieDetailPage = () => {
                   />
                 </div>
               )}
-              <h2>{data.title}</h2>
+              <h1>{data.title}</h1>
               <p>
                 <strong>Release date:</strong> {data.release_date}
               </p>
@@ -60,32 +61,42 @@ const MovieDetailPage = () => {
               <p>
                 <strong>Runtime:</strong> {data.runtime}
               </p>
-              <p>
-                <strong>Genres:</strong>
-              </p>
+              <span>
+                <strong>Genres: </strong>
+              </span>
               {data.genres.map((res) => (
-                <p
+                <span
                   className="custom-link"
                   onClick={() => navigate(`/genre/${res.id}`)}
                   key={res.id}
                 >
-                  {res.name}
-                </p>
+                  {res.name}{" "}
+                </span>
               ))}
-              <p>
-                <strong>Actors:</strong>
-              </p>
-              {data.credits.cast
-                .filter((res) => res.known_for_department === "Acting")
-                .map((res) => (
-                  <p
-                    className="custom-link"
-                    onClick={() => navigate(`/person/${res.id}`)}
-                    key={res.id}
-                  >
-                    {res.name}
-                  </p>
-                ))}
+              <h2 className="mt-5">Cast</h2>
+              <div className="reference-container">
+                {data.credits.cast
+                  .filter((res) => res.known_for_department === "Acting")
+                  .map((res) => (
+                    <div className="reference-card" key={res.id}>
+                      <img
+                        src={
+                          res.profile_path !== null
+                            ? `https://image.tmdb.org/t/p/w500/${res.profile_path}`
+                            : defaultImage
+                        }
+                        alt={res.name}
+                      />
+                      <p
+                        className="custom-link"
+                        onClick={() => navigate(`/person/${res.id}`)}
+                        key={res.id}
+                      >
+                        {res.name}
+                      </p>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
         </>
