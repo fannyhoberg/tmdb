@@ -11,6 +11,27 @@
   font-size: 32px;
 }
 
+.theme-button {
+  font-size: 20px;
+}
+
+.transparent-gray-button {
+  background-color: rgba(181, 179, 179, 0.5); /* Transparent grå färg */
+  border-color: rgba(128, 128, 128, 0.5); /* Matchande border färg */
+  color: #fff; /* Vit textfärg för kontrast */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.transparent-gray-button:hover {
+  background-color: rgba(
+    190,
+    189,
+    189,
+    0.7
+  ); /* Mörkare transparent grå färg vid hover */
+  border-color: rgba(128, 128, 128, 0.7); /* Matchande border färg vid hover */
+}
+
 .scrollmenu {
   overflow-x: auto;
   padding: 20px 0;

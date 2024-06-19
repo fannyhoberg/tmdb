@@ -32,8 +32,16 @@ const Navigation = () => {
               Genres
             </Nav.Link>
           </Nav>
-          <Button variant="outline-secondary" onClick={changeTheme}>
-            {darkMode ? "🌝" : "🌚"}
+          <Button
+            variant="outline-secondary"
+            className="transparent-gray-button"
+            onClick={changeTheme}
+          >
+            {darkMode ? (
+              <span className="theme-button">☀️</span>
+            ) : (
+              <span className="theme-button">🌙</span>
+            )}
           </Button>
         </Navbar.Collapse>
       </Container>

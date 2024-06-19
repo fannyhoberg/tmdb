@@ -88,7 +88,10 @@ const HomePage = () => {
                     )}
                     <h2>{res.title}</h2>
                     <p>Release date: {res.release_date}</p>
-                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                    <Button
+                      className="custom-button"
+                      onClick={() => navigate(`/movie/${res.id}`)}
+                    >
                       Read more
                     </Button>
                   </div>
@@ -128,7 +131,10 @@ const HomePage = () => {
                     <h2>{res.title}</h2>
                     <p>Release date: {res.release_date}</p>
                     <p>Popularity: {res.popularity}</p>
-                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                    <Button
+                      className="custom-button"
+                      onClick={() => navigate(`/movie/${res.id}`)}
+                    >
                       Read more
                     </Button>
                   </div>
@@ -168,7 +174,10 @@ const HomePage = () => {
                     <h2>{res.title}</h2>
                     <p>Release date: {res.release_date}</p>
                     <p>Vote average: {res.vote_average}</p>
-                    <Button onClick={() => navigate(`/movie/${res.id}`)}>
+                    <Button
+                      className="custom-button"
+                      onClick={() => navigate(`/movie/${res.id}`)}
+                    >
                       Read more
                     </Button>
                   </div>

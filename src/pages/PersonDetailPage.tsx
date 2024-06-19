@@ -30,11 +30,7 @@ const PersonDetailPage = () => {
       {isSuccess && (
         <>
           <div>
-            <Button
-              className="mb-2 mt-2"
-              variant="secondary"
-              onClick={() => navigate(-1)}
-            >
+            <Button className="pagination-button" onClick={() => navigate(-1)}>
               &laquo; Go back
             </Button>
           </div>
