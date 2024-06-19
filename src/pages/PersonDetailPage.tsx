@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { useEffect } from "react";
-import defaultImage from "../assets/images/imagenotfound.png";
 
+import defaultImage from "../assets/images/imagenotfound.png";
 import { getPerson } from "../services/TMDB_API";
 
 const PersonDetailPage = () => {

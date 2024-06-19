@@ -3,7 +3,6 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 
 import Pagination from "../components/Pagination";
-
 import { getGenre, getGenres } from "../services/TMDB_API";
 import MovieCard from "../components/MovieCard";
 

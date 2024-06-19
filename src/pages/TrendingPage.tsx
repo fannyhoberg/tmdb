@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getTrending } from "../services/TMDB_API";
 import MovieCard from "../components/MovieCard";
 

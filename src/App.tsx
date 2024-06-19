@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "./assets/scss/App.scss";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useContext } from "react";
 
 import HomePage from "./pages/HomePage";
 import NowPlayingPage from "./pages/NowPlayingPage";
@@ -15,18 +14,12 @@ import MovieDetailPage from "./pages/MovieDetailPage";
 import PersonDetailPage from "./pages/PersonDetailPage";
 
 import LoadingSpinner from "./components/LoadingSpinner";
-import { ThemeContext } from "./contexts/ThemeContextProvider";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import useTheme from "./hooks/useTheme";
 
 function App() {
-  const themeContext = useContext(ThemeContext);
-
-  if (!themeContext) {
-    throw new Error("Can't use ThemeContext");
-  }
-
-  const { darkMode } = themeContext;
+  const { darkMode } = useTheme();
 
   return (
     <div id="App" className={!darkMode ? "bg-white text-dark" : ""}>
