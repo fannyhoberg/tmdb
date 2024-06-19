@@ -63,7 +63,7 @@ export const getTopRated = async () => {
 // get trending movies
 export const getTrending = async () => {
   const res = await instance.get<TrendingResults>(
-    `/trending/movie/day?include_adult=false&region=US`
+    `/trending/movie/week?include_adult=false&region=US`
   );
   return res.data;
 };

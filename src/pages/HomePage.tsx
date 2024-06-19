@@ -78,7 +78,7 @@ const HomePage = () => {
             <h2 className="mt-5">Now Playing</h2>
             <div className="scrollmenu">
               <div className="scroll-card-container">
-                {nowplayingData.results.map((res) => (
+                {nowplayingData.results.slice(0, 10).map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
                     {res.poster_path && (
                       <img
@@ -114,10 +114,10 @@ const HomePage = () => {
 
         {trendingisSuccess && (
           <>
-            <h2 className="mt-5">Trending</h2>
+            <h2 className="mt-5">Trending this week</h2>
             <div className="scrollmenu">
               <div className="scroll-card-container">
-                {trendingData.results.map((res) => (
+                {trendingData.results.slice(0, 10).map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
                     {res.poster_path && (
                       <img
@@ -157,7 +157,7 @@ const HomePage = () => {
             <h2 className="mt-5">Top rated</h2>
             <div className="scrollmenu">
               <div className="scroll-card-container">
-                {topratedData.results.map((res) => (
+                {topratedData.results.slice(0, 10).map((res) => (
                   <div className="scroll-custom-card" key={res.id}>
                     {res.poster_path && (
                       <img

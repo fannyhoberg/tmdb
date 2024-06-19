@@ -31,8 +31,8 @@
   padding: 20px;
   margin-right: 10px;
   flex: 0 0 auto;
-  min-width: 250px; /* Minsta bredd för kortet */
-  max-width: 250px; /* Maximal bredd för kortet */
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .scroll-custom-card img {
@@ -243,8 +243,8 @@
   }
 
   .scroll-custom-card {
-    min-width: 250px; /* Minsta bredd för kortet */
-    max-width: 250px; /* Maximal bredd för kortet */
+    min-width: 250px;
+    max-width: 250px;
   }
 }
 
