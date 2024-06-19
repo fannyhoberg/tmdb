@@ -1,16 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-
 import { getNowPlaying } from "../services/TMDB_API";
+import MovieCard from "../components/MovieCard";
 
 const NowPlayingPage = () => {
   const { data, error, isError, isSuccess } = useQuery({
     queryKey: ["nowplaying"],
     queryFn: getNowPlaying,
   });
-
-  const navigate = useNavigate();
 
   return (
     <>
@@ -19,29 +15,12 @@ const NowPlayingPage = () => {
       )}
 
       {isSuccess && (
-        <div className="center-container">
-          <h1>Now Playing</h1>
-          <div className="container-cards">
-            {data.results.map((res) => (
-              <div className="custom-card" key={res.id}>
-                {res.poster_path && (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${res.poster_path}`}
-                    alt={res.title}
-                  />
-                )}
-                <h2>{res.title}</h2>
-                <p>Release date: {res.release_date}</p>
-                <Button
-                  className="custom-button"
-                  onClick={() => navigate(`/movie/${res.id}`)}
-                >
-                  Read more
-                </Button>
-              </div>
-            ))}
+        <>
+          <div className="center-container">
+            <h1>Now playing</h1>
+            <MovieCard data={data} />
           </div>
-        </div>
+        </>
       )}
     </>
   );

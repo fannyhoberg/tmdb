@@ -7,6 +7,7 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+// Navbar
 .logo {
   font-size: 32px;
 }
@@ -16,22 +17,17 @@
 }
 
 .transparent-gray-button {
-  background-color: rgba(181, 179, 179, 0.5); /* Transparent grå färg */
-  border-color: rgba(128, 128, 128, 0.5); /* Matchande border färg */
-  color: #fff; /* Vit textfärg för kontrast */
+  background-color: rgba(181, 179, 179, 0.5);
+  border-color: rgba(128, 128, 128, 0.5);
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .transparent-gray-button:hover {
-  background-color: rgba(
-    190,
-    189,
-    189,
-    0.7
-  ); /* Mörkare transparent grå färg vid hover */
-  border-color: rgba(128, 128, 128, 0.7); /* Matchande border färg vid hover */
+  background-color: rgba(190, 189, 189, 0.7);
+  border-color: rgba(128, 128, 128, 0.7);
 }
 
+// Home page
 .scrollmenu {
   overflow-x: auto;
   padding: 20px 0;
@@ -62,43 +58,6 @@
   max-height: 450px;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
-}
-
-.dark-mode {
-  background-color: rgb(60, 60, 60);
-  color: white;
-}
-
-.light-mode {
-  background-color: gainsboro;
-  color: black;
-  border: 1px solid black;
-}
-
-.center-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-}
-
-.footer-container {
-  min-height: 30vh;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10vh;
-  background-color: rgb(60, 60, 60);
-  color: white;
-}
-
-.footer-container {
-  font-size: 14px;
-  .fa-brands {
-    font-size: 24px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
 }
 
 .home-buttons {
@@ -140,6 +99,62 @@
   }
 }
 
+// Containers and cards
+.center-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.custom-card {
+  background-color: whitesmoke;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.custom-card img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+// Footer
+.footer-container {
+  min-height: 30vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10vh;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.footer-container {
+  font-size: 14px;
+  .fa-brands {
+    font-size: 24px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+// Buttons
 .custom-button {
   border: 1px solid transparent;
   border-radius: 0.5rem;
@@ -185,33 +200,7 @@
   }
 }
 
-.container-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.custom-card {
-  background-color: whitesmoke;
-  color: black;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.custom-card img {
-  width: 100%;
-  height: auto;
-  max-height: 450px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-}
-
+// Detail cards
 .container-cards-details {
   display: flex;
   justify-content: center;

@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
-import { Button } from "react-bootstrap";
 
 import Pagination from "../components/Pagination";
-import defaultImage from "../assets/images/imagenotfound.png";
 
 import { getGenre, getGenres } from "../services/TMDB_API";
+import MovieCard from "../components/MovieCard";
 
 const GenrePage = () => {
   const { id } = useParams();
@@ -14,8 +13,6 @@ const GenrePage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1");
-
-  const navigate = useNavigate();
 
   const { data, error, isError, isSuccess } = useQuery({
     queryKey: ["genre", currentPage, genreId],
@@ -68,29 +65,7 @@ const GenrePage = () => {
       {isSuccess && (
         <>
           <div className="center-container">
-            <div className="container-cards">
-              {data.results.map((res) => (
-                <div className="custom-card" key={res.id}>
-                  <img
-                    src={
-                      res.poster_path !== null
-                        ? `https://image.tmdb.org/t/p/w500/${res.poster_path}`
-                        : defaultImage
-                    }
-                    alt={res.title}
-                  />
-                  <h2>{res.title}</h2>
-                  <p>Release date: {res.release_date}</p>
-                  <p>Vote average: {res.vote_average}</p>
-                  <Button
-                    className="custom-button"
-                    onClick={() => navigate(`/movie/${res.id}`)}
-                  >
-                    Read more
-                  </Button>
-                </div>
-              ))}
-            </div>
+            <MovieCard data={data} />
           </div>
           <Pagination
             onNextPage={nextPage}

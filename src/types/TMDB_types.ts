@@ -15,7 +15,13 @@ export interface Movie {
   vote_count: number;
 }
 
+interface MovieDates {
+  maximum: string;
+  minimum: string;
+}
+
 export interface MovieResults {
+  dates: MovieDates;
   page: number;
   results: Movie[];
   total_pages: number;
@@ -29,33 +35,6 @@ export interface Genre {
 interface InfoGenre {
   id: number;
   name: string;
-}
-
-interface MovieDates {
-  maximum: string;
-  minimum: string;
-}
-
-export interface NowPlayingResults {
-  dates: MovieDates;
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface TopRatedResults {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface TrendingResults {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
 }
 
 export interface MovieDetails {

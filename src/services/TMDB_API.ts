@@ -3,10 +3,7 @@ import {
   Genre,
   MovieDetails,
   MovieResults,
-  NowPlayingResults,
   PersonDetails,
-  TopRatedResults,
-  TrendingResults,
 } from "../types/TMDB_types";
 
 const instance = axios.create({
@@ -46,7 +43,7 @@ export const getGenre = async (id: number, page: number) => {
 
 // get now playing
 export const getNowPlaying = async () => {
-  const res = await instance.get<NowPlayingResults>(
+  const res = await instance.get<MovieResults>(
     `/movie/now_playing?include_adult=false&sort_by=popularity.desc&region=US`
   );
   return res.data;
@@ -54,7 +51,7 @@ export const getNowPlaying = async () => {
 
 // get top rated
 export const getTopRated = async () => {
-  const res = await instance.get<TopRatedResults>(
+  const res = await instance.get<MovieResults>(
     `/movie/top_rated?include_adult=false&region=US`
   );
   return res.data;
@@ -62,7 +59,7 @@ export const getTopRated = async () => {
 
 // get trending movies
 export const getTrending = async () => {
-  const res = await instance.get<TrendingResults>(
+  const res = await instance.get<MovieResults>(
     `/trending/movie/week?include_adult=false&region=US`
   );
   return res.data;
